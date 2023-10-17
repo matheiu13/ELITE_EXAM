@@ -29,6 +29,7 @@
         return $result;
     }
 
+    // unarranged list
     $words = array("apple",
         "Banana",
         "cherry",
@@ -39,11 +40,25 @@
         "CAt",
         "dOg",
         "ElEPHAnt",
-        "anT"
+        "anT",
+        "baNAna",
+        "baNAna",
     );
 
     // usort will call the customSort function multiple times until the list is sorted.
     usort($words, 'customSort');
 
-    echo implode(", ", $words);
+    // echo implode(", ", $words);
+    $searchTerm = "baNAna";
+    // Search for the term in the list
+    $foundIndexes = array_keys($words, $searchTerm);
+
+    // Display the result
+    if (count($foundIndexes) > 0) {
+        echo "your list of words are " . implode(", " ,$words) . "\n";
+        echo "Indexes where '$searchTerm' is found: " . implode(", ", $foundIndexes) . "\n";
+    } else {
+        echo "'$searchTerm' not found in the list.\n";
+    }
+
 ?>
